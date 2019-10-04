@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+    xmlns:wsp="http://www.w3.org/ns/ws-policy" 
+    xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+    xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:tns="http://wsserver/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://wsserver/" name="SoapService">
+    <types></types>
+    <message name="sendData">
+        <part name="data" type="xsd:base64Binary"/>
+    </message>
+    <message name="sendDataResponse"/>
+    <portType name="Soap">
+        <operation name="sendData">
+            <input wsam:Action="http://wsserver/Soap/sendDataRequest" message="tns:sendData"/>
+            <output wsam:Action="http://wsserver/Soap/sendDataResponse" message="tns:sendDataResponse"/>
+        </operation>
+    </portType>
+    <binding name="SoapPortBinding" type="tns:Soap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+        <operation name="sendData">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal" namespace="http://wsserver/"/>
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://wsserver/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="SoapService">
+        <port name="SoapPort" binding="tns:SoapPortBinding">
+            <soap:address location="http://localhost:8080/soap"/>
+        </port>
+    </service>
+</definitions>
