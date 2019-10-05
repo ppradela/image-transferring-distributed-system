@@ -1,0 +1,3 @@
+2019-10-04 23:56:09.992 [INFO] SoapClient - Starting application
+2019-10-04 23:56:10.001 [ERROR] SoapClient - No filepath as a command-line argument
+2019-10-04 23:56:10.003 [INFO] SoapClient - Closing application

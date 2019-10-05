@@ -4,12 +4,12 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Appender;
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Layout;
 import org.apache.log4j.LogManager;
@@ -18,17 +18,18 @@ import org.apache.log4j.PatternLayout;
 
 public class SoapClient {
     public static void main(String[] args) throws IOException {
-        Logger logger = LogManager.getLogger(SoapClient.class.getName());
-        Layout layout = new PatternLayout("%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n");
-        Appender appender = new FileAppender(layout, "logs.log");
-        BasicConfigurator.configure(appender);
+        Logger logger = LogManager.getLogger("SoapClient");
+        Layout layout = new PatternLayout("%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] %c - %m%n");
+        Appender appender = new FileAppender(layout, Paths.get(".").normalize().toAbsolutePath() + File.separator
+                + "wsclient" + File.separator + "SoapClient.log");
+        logger.addAppender(appender);
 
         System.out.println("Starting application");
         logger.info("Starting application");
 
         if (args.length == 0) {
             System.err.println("Proper usage: java program image.jpg");
-            logger.error("No filepath");
+            logger.error("No filepath as a command-line argument");
             System.out.println("Closing application");
             logger.info("Closing application");
             System.exit(0);
@@ -67,8 +68,8 @@ public class SoapClient {
         }
 
         SoapService service = new SoapService();
-        System.out.println("Creating SOAP connection to "+service.getServiceName()); 
-        logger.info("Creating SOAP connection to "+service.getServiceName());       
+        System.out.println("Creating SOAP connection to " + service.getServiceName());
+        logger.info("Creating SOAP connection to " + service.getServiceName());
         Soap soap = service.getSoapPort();
         System.out.println("Sending image");
         logger.info("Sending image");

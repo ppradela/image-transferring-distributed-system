@@ -4,7 +4,8 @@
             "type": "java",
             "name": "CodeLens (Launch) - SoapClient",
             "request": "launch",
-            "mainClass": "wsclient.SoapClient"
+            "mainClass": "wsclient.SoapClient",
+            "projectName": "wsclient"
         }
     ]
 }
