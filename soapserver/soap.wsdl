@@ -4,35 +4,35 @@
     xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" 
     xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" 
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-    xmlns:tns="http://wsserver/" 
+    xmlns:tns="http://localhost/SoapService" 
     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-    xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://wsserver/" name="SoapService">
-    <types></types>
-    <message name="sendData">
-        <part name="data" type="xsd:base64Binary"/>
+    xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://localhost/SoapService" name="SoapService">
+    <types/>
+    <message name="sendImageHexString">
+        <part name="imageHexString" type="xsd:string"/>
     </message>
-    <message name="sendDataResponse"/>
+    <message name="sendImageHexStringResponse"/>
     <portType name="Soap">
-        <operation name="sendData">
-            <input wsam:Action="http://wsserver/Soap/sendDataRequest" message="tns:sendData"/>
-            <output wsam:Action="http://wsserver/Soap/sendDataResponse" message="tns:sendDataResponse"/>
+        <operation name="sendImageHexString">
+            <input wsam:Action="http://localhost/SoapService/Soap/sendImageHexStringRequest" message="tns:sendImageHexString"/>
+            <output wsam:Action="http://localhost/SoapService/Soap/sendImageHexStringResponse" message="tns:sendImageHexStringResponse"/>
         </operation>
     </portType>
     <binding name="SoapPortBinding" type="tns:Soap">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
-        <operation name="sendData">
+        <operation name="sendImageHexString">
             <soap:operation soapAction=""/>
             <input>
-                <soap:body use="literal" namespace="http://wsserver/"/>
+                <soap:body use="literal" namespace="http://localhost/SoapService"/>
             </input>
             <output>
-                <soap:body use="literal" namespace="http://wsserver/"/>
+                <soap:body use="literal" namespace="http://localhost/SoapService"/>
             </output>
         </operation>
     </binding>
     <service name="SoapService">
         <port name="SoapPort" binding="tns:SoapPortBinding">
-            <soap:address location="http://127.0.0.1:8080/soap"/>
+            <soap:address location="http://localhost:8080/soapserver/SoapService/"/>
         </port>
     </service>
 </definitions>

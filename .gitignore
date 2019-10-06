@@ -67,6 +67,8 @@ Mkfile.old
 dkms.conf
 
 #VS Code
-.vscode
-.settings
-.launch.json
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
