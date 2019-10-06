@@ -154,3 +154,50 @@
 2019-10-06 19:43:13.922 [INFO] SoapClient - Sending image
 2019-10-06 19:43:14.341 [INFO] SoapClient - Image sended
 2019-10-06 19:43:14.342 [INFO] SoapClient - Closing application
+2019-10-06 23:15:37.636 [INFO] SoapClient - Starting application
+2019-10-06 23:15:37.641 [ERROR] SoapClient - No filepath as a command-line argument
+2019-10-06 23:15:37.641 [INFO] SoapClient - Closing application
+2019-10-06 23:15:45.433 [INFO] SoapClient - Starting application
+2019-10-06 23:15:45.438 [INFO] SoapClient - Processing image
+2019-10-06 23:15:45.737 [INFO] SoapClient - Converting to PNG
+2019-10-06 23:15:45.887 [INFO] SoapClient - Converted successfully
+2019-10-06 23:15:47.439 [INFO] SoapClient - Creating SOAP connection
+2019-10-06 23:15:48.267 [INFO] SoapClient - Sending image
+2019-10-06 23:15:48.750 [INFO] SoapClient - Image sended
+2019-10-06 23:15:48.750 [INFO] SoapClient - Closing application
+2019-10-06 23:19:52.055 [INFO] SoapClient - Starting application
+2019-10-06 23:19:52.063 [INFO] SoapClient - Processing image
+2019-10-06 23:19:52.305 [INFO] SoapClient - Converting to PNG
+2019-10-06 23:19:52.390 [INFO] SoapClient - Converted successfully
+2019-10-06 23:19:52.954 [INFO] SoapClient - Creating SOAP connection
+2019-10-06 23:19:53.358 [INFO] SoapClient - Sending image
+2019-10-06 23:19:53.690 [INFO] SoapClient - Image sended
+2019-10-06 23:19:53.691 [INFO] SoapClient - Closing application
+2019-10-06 23:38:46.147 [INFO] SoapClient - Starting application
+2019-10-06 23:38:46.154 [INFO] SoapClient - Processing image
+2019-10-06 23:38:46.372 [INFO] SoapClient - Converting to PNG
+2019-10-06 23:38:46.522 [INFO] SoapClient - Converted successfully
+2019-10-06 23:38:46.948 [INFO] SoapClient - Creating SOAP connection
+2019-10-06 23:38:47.453 [INFO] SoapClient - Sending image
+2019-10-06 23:49:50.872 [INFO] SoapClient - Starting application
+2019-10-06 23:49:50.874 [INFO] SoapClient - Processing image
+2019-10-06 23:49:51.094 [INFO] SoapClient - Converting to PNG
+2019-10-06 23:49:51.225 [INFO] SoapClient - Converted successfully
+2019-10-06 23:49:51.472 [INFO] SoapClient - Creating SOAP connection
+2019-10-06 23:49:51.802 [INFO] SoapClient - Sending image
+2019-10-06 23:49:52.037 [INFO] SoapClient - Image sended
+2019-10-06 23:49:52.037 [INFO] SoapClient - Closing application
+2019-10-06 23:54:20.824 [INFO] SoapClient - Starting application
+2019-10-06 23:54:20.826 [ERROR] SoapClient - No filepath as a command-line argument
+2019-10-06 23:54:20.826 [INFO] SoapClient - Closing application
+2019-10-06 23:58:21.921 [INFO] SoapClient - Starting application
+2019-10-06 23:58:21.923 [ERROR] SoapClient - No filepath as a command-line argument
+2019-10-06 23:58:21.924 [INFO] SoapClient - Closing application
+2019-10-06 23:58:40.084 [INFO] SoapClient - Starting application
+2019-10-06 23:58:40.088 [INFO] SoapClient - Processing image
+2019-10-06 23:58:40.268 [INFO] SoapClient - Converting to PNG
+2019-10-06 23:58:40.407 [INFO] SoapClient - Converted successfully
+2019-10-06 23:58:40.734 [INFO] SoapClient - Creating SOAP connection
+2019-10-06 23:58:41.079 [INFO] SoapClient - Sending image
+2019-10-06 23:58:41.321 [INFO] SoapClient - Image sended
+2019-10-06 23:58:41.322 [INFO] SoapClient - Closing application
