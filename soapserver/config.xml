@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <appender name="file" class="LoggerAppenderFile">
+        <layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] %c - %m%n" />
+        </layout>
+        <param name="file" value="logs.log" />
+        <param name="append" value="true" />
+    </appender>
+    <appender name="console" class="LoggerAppenderConsole">
+        <layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%d{Y-m-d H:i:s,u} [%p] %c - %m%n" />
+        </layout>
+    </appender>
+    <root>
+        <appender_ref ref="file" />
+        <appender_ref ref="console" />
+    </root>
+</configuration>

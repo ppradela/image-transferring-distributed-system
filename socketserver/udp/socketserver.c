@@ -6,8 +6,19 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <time.h>
+
 #define PORT 9999
 #define MAXLINE 16
+
+void logger(char* tag, char* message) {
+   FILE *f;
+   time_t now;
+   time(&now);
+   fopen("logs.log", "a+");
+   printf("%s [%s]: %s\n", ctime(&now), tag, message);   
+   fprintf(f, "%s [%s]: %s\n", ctime(&now), tag, message);
+}
 
 int main(int argc, char** argv)
 {
@@ -16,11 +27,11 @@ int main(int argc, char** argv)
     struct sockaddr_in servaddr, cliaddr;
 
     if (argc > 2) {
-        printf("Too many arguments\n");
+        logger("ERROR","Too many arguments");
         return 0;
     }
     else if (argc <= 1) {
-        printf("Proper usage: ./program filename\n");
+        logger("ERROR","Proper usage: ./program filename");
         return 0;
     }
 

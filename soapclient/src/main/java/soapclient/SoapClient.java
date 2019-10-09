@@ -17,14 +17,14 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 
 public class SoapClient {
-    
+
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
-    
+
     public static void main(String[] args) throws IOException {
-        Logger logger = LogManager.getLogger("SoapClient");
-        Layout layout = new PatternLayout("%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] %c - %m%n");
-        FileAppender fileAppender = new FileAppender(layout, Paths.get(".").normalize().toAbsolutePath() + File.separator
-                        + "soapclient" + File.separator + "SoapClient.log");
+        Logger logger = LogManager.getRootLogger();
+        Layout layout = new PatternLayout("%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] - %m%n");
+        FileAppender fileAppender = new FileAppender(layout, Paths.get(".").normalize().toAbsolutePath()
+                + File.separator + "soapclient" + File.separator + "logs.log");
         ConsoleAppender consoleAppender = new ConsoleAppender(layout);
         logger.addAppender(fileAppender);
         logger.addAppender(consoleAppender);
@@ -39,7 +39,7 @@ public class SoapClient {
         } else if (args.length > 1) {
             logger.error("Too many arguments");
             logger.info("Closing application");
-            System.exit(0);     
+            System.exit(0);
         } else if (!FilenameUtils.getExtension(args[0]).equals("jpg")) {
             logger.error("Proper image file format: JPEG");
             logger.info("Closing application");
@@ -50,7 +50,7 @@ public class SoapClient {
             System.exit(0);
         }
 
-        String imageHexString=null;
+        String imageHexString = null;
 
         try {
             logger.info("Processing image");
