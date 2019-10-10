@@ -21,6 +21,7 @@ void logger(char tag[], char message[]) {
     printf("%s [%s]: %s\n", tm_buff, tag, message);   
     fprintf(f, "%s [%s]: %s\n", tm_buff, tag, message);
     fclose(f);
+    bzero(tm_buff,26);
 }
 
 int main(int argc, char const* argv[])
