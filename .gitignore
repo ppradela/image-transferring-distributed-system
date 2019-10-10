@@ -70,3 +70,4 @@ dkms.conf
 .vscode/
 
 *.log
+*.png

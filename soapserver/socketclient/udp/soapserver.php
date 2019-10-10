@@ -4,7 +4,7 @@ Logger::configure(dirname(__DIR__, 2).'/config.xml');
 
 function sendImageHexString($imageHexString)
 {    
-    $logger = Logger::getRootLogger();
+    $logger = Logger::getLogger("");
     error_reporting(~E_WARNING);
     
     $server = '127.0.0.1';
@@ -20,7 +20,6 @@ function sendImageHexString($imageHexString)
     }
     
     $logger->info("Socket created");
-    
     $parts = str_split($imageHexString, 16);
     
     $logger->info("Sending data to server");

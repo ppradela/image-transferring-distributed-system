@@ -4,7 +4,7 @@ Logger::configure(dirname(__DIR__, 2).'/config.xml');
 
 function sendImageHexString($imageHexString)
 {    
-    $logger = Logger::getRootLogger();
+    $logger = Logger::getLogger();
 
     $host    = "127.0.0.1";
     $port    = 25003;
