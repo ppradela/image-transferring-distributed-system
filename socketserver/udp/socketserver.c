@@ -22,7 +22,7 @@ void logger(char tag[], char message[]) {
     strftime(tm_buff, 26, "%Y-%m-%d %H:%M:%S", tm_info);
 
     f = fopen("logs.log", "a+");
-    printf("%s [%s]: %s\n", tm_buff, tag, message);   
+    printf("%s [%s]: %s\n", tm_buff, tag, message);
     fprintf(f, "%s [%s]: %s\n", tm_buff, tag, message);
     fclose(f);
     bzero(tm_buff,26);
@@ -72,12 +72,21 @@ int main(int argc, char** argv)
 
     logger("INFO", "Waiting for data");
     int len, n;
-    while ((n = recvfrom(sockfd, (char*)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr*)&cliaddr, &len)) > 0) {
+    //while ((n = recvfrom(sockfd, (char*)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr*)&cliaddr, &len)) > 0) {
+    char *p;
+    while ((n = recv(sockfd, (char*)buffer, MAXLINE,0)) > 0) {
         buffer[n] = '\0';
-        printf("%s", buffer);
+        //printf("%s", buffer);
+        int i =0;
+        for(i=0;i<16;i+=2){
+          unsigned char val;
+          char tmp_hexbuf[3]={buffer[i],buffer[i+1],0};
+          val = strtol(tmp_hexbuf,NULL,16);
+          fputc(val,fp);
+        }
         bzero(buffer, MAXLINE);
     }
-    logger("INFO", "Image saved");    
+    logger("INFO", "Image saved");
     fclose(fp);
 
     logger("INFO", "Closing socket");

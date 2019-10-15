@@ -19,7 +19,7 @@ void logger(char tag[], char message[]) {
     strftime(tm_buff, 26, "%Y-%m-%d %H:%M:%S", tm_info);
 
     f = fopen("logs.log", "a+");
-    printf("%s [%s]: %s\n", tm_buff, tag, message);   
+    printf("%s [%s]: %s\n", tm_buff, tag, message);
     fprintf(f, "%s [%s]: %s\n", tm_buff, tag, message);
     fclose(f);
     bzero(tm_buff,26);
@@ -87,10 +87,17 @@ int main(int argc, char const* argv[])
     logger("INFO", "Waiting for data");
     while ((valread = read(new_socket, buffer, 16)) > 0) {
         buffer[valread] = '\0';
-        printf("%s", buffer);
+        //printf("%s", buffer);
+        int i =0;
+        for(i=0;i<16;i+=2){
+          unsigned char val;
+          char tmp_hexbuf[3]={buffer[i],buffer[i+1],0};
+          val = strtol(tmp_hexbuf,NULL,16);
+          fputc(val,fp);
+        }
         bzero(buffer, 16);
     }
-    logger("INFO", "Image saved");    
+    logger("INFO", "Image saved");
     fclose(fp);
 
     logger("INFO", "Closing socket");
