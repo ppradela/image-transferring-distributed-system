@@ -14,6 +14,7 @@ Project is created with:
 * Apache Log4j version: 1.2.15
 * Maven version: 3.6.2
 * PHP version : 7.3.4
+* Apache log4php version: 2.3
 	
 ## Setup
 1. Install Java Runtime Environment
