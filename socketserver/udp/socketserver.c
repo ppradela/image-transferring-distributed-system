@@ -9,7 +9,7 @@
 #include <time.h>
 
 #define PORT 9999
-#define MAXLINE 16
+#define MAXLINE 1024
 
 void logger(char tag[], char message[])
 {
@@ -71,18 +71,8 @@ int main(int argc, char** argv)
     FILE* fp = fopen(name_with_extension, "wb+");
 
     logger("INFO", "Waiting for data");
-    int n, flag;
-    flag = 1;
-    while (flag) {
-        n = recv(sockfd, (char*)buffer, MAXLINE, 0);
-        logger("INFO", "Receiving data");
-        if (n == -1) {
-            logger("ERROR", "Problem occured while receiving data");
-            exit(EXIT_FAILURE);
-            flag = 0;
-        }
-        int i = 0;
-        for (i = 0; i < MAXLINE; i += 2) {
+    while (recv(sockfd, (char*)buffer, MAXLINE, 0) > 0) {
+        for (int i = 0; i < MAXLINE; i += 2) {
             unsigned char val;
             char tmp_hexbuf[3] = { buffer[i], buffer[i + 1], 0 };
             val = strtol(tmp_hexbuf, NULL, 16);
@@ -90,6 +80,7 @@ int main(int argc, char** argv)
         }
         bzero(buffer, MAXLINE);
     }
+    logger("INFO", "Image saved");
     fclose(fp);
 
     logger("INFO", "Closing socket");

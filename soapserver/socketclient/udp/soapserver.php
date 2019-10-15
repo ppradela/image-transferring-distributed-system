@@ -20,9 +20,10 @@ function sendImageHexString($imageHexString)
     }
     
     $logger->info("Socket created");
-    $parts = str_split($imageHexString, 16);
     
-    $logger->info("Sending data to server");
+    $parts = str_split($imageHexString, 1024);
+
+    $logger->info("Sending data to server");    
     foreach ($parts as $part) {
         if (!socket_sendto($sock, $part, strlen($part), 0, $server, $port)) {
             $errorcode = socket_last_error();
