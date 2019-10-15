@@ -52,7 +52,7 @@ Project is created with:
     	$ php -S 127.0.0.1:8080 soapserver.php
     	```
 
-    - Run soap client with argument(path to JPEG image which will be send)
+    - Run soap client with argument (path to JPEG image which will be send)
     
     	```
     	$ cd ../rmi-distributed-mutual-exclusion/soapclient
