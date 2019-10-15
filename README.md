@@ -40,7 +40,7 @@ Project is created with:
     	$ ./socketserver
     	```
 
-    - Run soap server, socket client 
+    - Run soap server/socket client 
     
     	*Socket TCP*
     	```
