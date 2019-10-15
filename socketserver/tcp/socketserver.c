@@ -8,8 +8,9 @@
 
 #define PORT 25003
 
-void logger(char tag[], char message[]) {
-    FILE *f;
+void logger(char tag[], char message[])
+{
+    FILE* f;
     char tm_buff[26];
     struct tm* tm_info;
     time_t now;
@@ -22,7 +23,7 @@ void logger(char tag[], char message[]) {
     printf("%s [%s]: %s\n", tm_buff, tag, message);
     fprintf(f, "%s [%s]: %s\n", tm_buff, tag, message);
     fclose(f);
-    bzero(tm_buff,26);
+    bzero(tm_buff, 26);
 }
 
 int main(int argc, char const* argv[])
@@ -36,21 +37,21 @@ int main(int argc, char const* argv[])
     char* extension = ".png";
 
     if (argc > 2) {
-        logger("ERROR","Too many arguments");
+        logger("ERROR", "Too many arguments");
         return 0;
     }
     else if (argc <= 1) {
-        logger("ERROR","Proper usage: ./program filename");
+        logger("ERROR", "Proper usage: ./program filename");
         return 0;
     }
 
-    name_with_extension = malloc(strlen(argv[1])+1+4);
+    name_with_extension = malloc(strlen(argv[1]) + 1 + 4);
     strcpy(name_with_extension, argv[1]);
     strcat(name_with_extension, extension);
 
-    logger("INFO","Creating socket file descriptor");
+    logger("INFO", "Creating socket file descriptor");
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
-        logger("ERROR","Couldn't create socket");
+        logger("ERROR", "Couldn't create socket");
         exit(EXIT_FAILURE);
     }
 
@@ -66,7 +67,7 @@ int main(int argc, char const* argv[])
 
     logger("INFO", "Binding");
     if (bind(server_fd, (struct sockaddr*)&address, sizeof(address)) < 0) {
-        logger("ERROR","Bind failed");
+        logger("ERROR", "Bind failed");
         exit(EXIT_FAILURE);
     }
 
@@ -82,16 +83,16 @@ int main(int argc, char const* argv[])
         exit(EXIT_FAILURE);
     }
 
-    FILE *fp = fopen(name_with_extension, "wb+");
+    FILE* fp = fopen(name_with_extension, "wb+");
 
     logger("INFO", "Waiting for data");
     while ((valread = read(new_socket, buffer, 16)) > 0) {
-        int i =0;
-        for(i=0;i<16;i+=2){
-          unsigned char val;
-          char tmp_hexbuf[3]={buffer[i],buffer[i+1],0};
-          val = strtol(tmp_hexbuf,NULL,16);
-          fputc(val,fp);
+        int i = 0;
+        for (i = 0; i < 16; i += 2) {
+            unsigned char val;
+            char tmp_hexbuf[3] = { buffer[i], buffer[i + 1], 0 };
+            val = strtol(tmp_hexbuf, NULL, 16);
+            fputc(val, fp);
         }
         bzero(buffer, 16);
     }

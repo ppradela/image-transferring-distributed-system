@@ -29,7 +29,6 @@ public class SoapClient {
         logger.addAppender(fileAppender);
         logger.addAppender(consoleAppender);
 
-        System.out.println("Starting application");
         logger.info("Starting application");
 
         if (args.length == 0) {

@@ -1,9 +1,9 @@
 <?php
-require_once dirname(__DIR__, 2).'/log4php/Logger.php';
-Logger::configure(dirname(__DIR__, 2).'/config.xml');
+require_once dirname(__DIR__, 2) . '/log4php/Logger.php';
+Logger::configure(dirname(__DIR__, 2) . '/config.xml');
 
 function sendImageHexString($imageHexString)
-{    
+{
     $logger = Logger::getLogger("");
     error_reporting(~E_WARNING);
     
@@ -14,7 +14,7 @@ function sendImageHexString($imageHexString)
     if (!($sock = socket_create(AF_INET, SOCK_DGRAM, 0))) {
         $errorcode = socket_last_error();
         $errormsg  = socket_strerror($errorcode);
-
+        
         $logger->error("Couldn't create socket: [$errorcode] $errormsg");
         die("Couldn't create socket: [$errorcode] $errormsg \n");
     }
@@ -33,9 +33,9 @@ function sendImageHexString($imageHexString)
         }
     }
     $logger->info("Sent successfully");
-
+    
     $logger->info("Closing socket");
-    socket_close($sock);    
+    socket_close($sock);
     $logger->info("Socket closed");
 }
 

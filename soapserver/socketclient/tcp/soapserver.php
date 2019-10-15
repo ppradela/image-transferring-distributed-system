@@ -1,14 +1,14 @@
 <?php
-require_once dirname(__DIR__, 2).'/log4php/Logger.php';
-Logger::configure(dirname(__DIR__, 2).'/config.xml');
+require_once dirname(__DIR__, 2) . '/log4php/Logger.php';
+Logger::configure(dirname(__DIR__, 2) . '/config.xml');
 
 function sendImageHexString($imageHexString)
-{    
-    $logger = Logger::getLogger();
-
-    $host    = "127.0.0.1";
-    $port    = 25003;
-
+{
+    $logger = Logger::getLogger("");
+    
+    $host = "127.0.0.1";
+    $port = 25003;
+    
     $logger->info("Creating socket");
     $socket = socket_create(AF_INET, SOCK_STREAM, 0) or die("Could not create socket\n") and $logger->error("Could not create socket");
     $logger->info("Socket created");

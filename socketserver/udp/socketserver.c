@@ -11,8 +11,9 @@
 #define PORT 9999
 #define MAXLINE 16
 
-void logger(char tag[], char message[]) {
-    FILE *f;
+void logger(char tag[], char message[])
+{
+    FILE* f;
     char tm_buff[26];
     struct tm* tm_info;
     time_t now;
@@ -25,7 +26,7 @@ void logger(char tag[], char message[]) {
     printf("%s [%s]: %s\n", tm_buff, tag, message);
     fprintf(f, "%s [%s]: %s\n", tm_buff, tag, message);
     fclose(f);
-    bzero(tm_buff,26);
+    bzero(tm_buff, 26);
 }
 
 int main(int argc, char** argv)
@@ -37,21 +38,21 @@ int main(int argc, char** argv)
     char* extension = ".png";
 
     if (argc > 2) {
-        logger("ERROR","Too many arguments");
+        logger("ERROR", "Too many arguments");
         return 0;
     }
     else if (argc <= 1) {
-        logger("ERROR","Proper usage: ./program filename");
+        logger("ERROR", "Proper usage: ./program filename");
         return 0;
     }
 
-    name_with_extension = malloc(strlen(argv[1])+1+4);
+    name_with_extension = malloc(strlen(argv[1]) + 1 + 4);
     strcpy(name_with_extension, argv[1]);
     strcat(name_with_extension, extension);
 
     logger("INFO", "Creating socket file descriptor");
     if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
-        logger("ERROR","Socket creation failed");
+        logger("ERROR", "Socket creation failed");
         exit(EXIT_FAILURE);
     }
 
@@ -63,26 +64,32 @@ int main(int argc, char** argv)
 
     logger("INFO", "Binding the socket with the address");
     if (bind(sockfd, (const struct sockaddr*)&servaddr, sizeof(servaddr)) < 0) {
-        logger("ERROR","Bind failed");
+        logger("ERROR", "Bind failed");
         exit(EXIT_FAILURE);
     }
 
-    FILE *fp = fopen(name_with_extension, "wb+");
+    FILE* fp = fopen(name_with_extension, "wb+");
 
     logger("INFO", "Waiting for data");
-    int n;
-    char *p;
-    while ((n = recv(sockfd, (char*)buffer, MAXLINE,0)) > 0) {
-        int i =0;
-        for(i=0;i<16;i+=2){
-          unsigned char val;
-          char tmp_hexbuf[3]={buffer[i],buffer[i+1],0};
-          val = strtol(tmp_hexbuf,NULL,16);
-          fputc(val,fp);
+    int n, flag;
+    flag = 1;
+    while (flag) {
+        n = recv(sockfd, (char*)buffer, MAXLINE, 0);
+        logger("INFO", "Receiving data");
+        if (n == -1) {
+            logger("ERROR", "Problem occured while receiving data");
+            exit(EXIT_FAILURE);
+            flag = 0;
+        }
+        int i = 0;
+        for (i = 0; i < MAXLINE; i += 2) {
+            unsigned char val;
+            char tmp_hexbuf[3] = { buffer[i], buffer[i + 1], 0 };
+            val = strtol(tmp_hexbuf, NULL, 16);
+            fputc(val, fp);
         }
         bzero(buffer, MAXLINE);
     }
-    logger("INFO", "Image saved");
     fclose(fp);
 
     logger("INFO", "Closing socket");
