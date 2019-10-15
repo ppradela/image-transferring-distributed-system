@@ -86,8 +86,6 @@ int main(int argc, char const* argv[])
 
     logger("INFO", "Waiting for data");
     while ((valread = read(new_socket, buffer, 16)) > 0) {
-        buffer[valread] = '\0';
-        //printf("%s", buffer);
         int i =0;
         for(i=0;i<16;i+=2){
           unsigned char val;

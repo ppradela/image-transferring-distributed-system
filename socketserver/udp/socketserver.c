@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 {
     int sockfd;
     char buffer[MAXLINE];
-    struct sockaddr_in servaddr, cliaddr;
+    struct sockaddr_in servaddr;
     char* name_with_extension;
     char* extension = ".png";
 
@@ -56,7 +56,6 @@ int main(int argc, char** argv)
     }
 
     memset(&servaddr, 0, sizeof(servaddr));
-    memset(&cliaddr, 0, sizeof(cliaddr));
 
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = INADDR_ANY;
@@ -71,12 +70,9 @@ int main(int argc, char** argv)
     FILE *fp = fopen(name_with_extension, "wb+");
 
     logger("INFO", "Waiting for data");
-    int len, n;
-    //while ((n = recvfrom(sockfd, (char*)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr*)&cliaddr, &len)) > 0) {
+    int n;
     char *p;
     while ((n = recv(sockfd, (char*)buffer, MAXLINE,0)) > 0) {
-        buffer[n] = '\0';
-        //printf("%s", buffer);
         int i =0;
         for(i=0;i<16;i+=2){
           unsigned char val;
