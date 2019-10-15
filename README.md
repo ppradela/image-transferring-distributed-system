@@ -59,5 +59,5 @@ Project is created with:
     	```
     	$ cd ../rmi-distributed-mutual-exclusion/soapclient
     	$ mvn compile
-    	$mvn exec:java -Dexec.mainClass=soapclient.SoapClient -Dexec.args='/path/to/image.jpg'
+    	$ mvn exec:java -Dexec.mainClass=soapclient.SoapClient -Dexec.args='/path/to/image.jpg'
     	```
