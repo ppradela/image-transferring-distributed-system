@@ -31,11 +31,12 @@ void logger(char tag[], char message[])
 
 int main(int argc, char** argv)
 {
-    int sockfd;
+    int sockfd,n;
     char buffer[MAXLINE];
     struct sockaddr_in servaddr;
     char* name_with_extension;
     char* extension = ".png";
+    char* stop = "STOP";
 
     if (argc > 2) {
         logger("ERROR", "Too many arguments");
@@ -71,7 +72,19 @@ int main(int argc, char** argv)
     FILE* fp = fopen(name_with_extension, "wb+");
 
     logger("INFO", "Waiting for data");
-    while (recv(sockfd, (char*)buffer, MAXLINE, 0) > 0) {
+    while (1) {
+        n=recv(sockfd, (char*)buffer, MAXLINE, 0);
+        if (n<0)
+        {
+            logger("ERROR", "Problem occured while receiving data");
+            exit(EXIT_FAILURE);
+        }        
+
+        if (strcmp(buffer,stop)==0)
+        {
+            break;
+        }
+        
         for (int i = 0; i < MAXLINE; i += 2) {
             unsigned char val;
             char tmp_hexbuf[3] = { buffer[i], buffer[i + 1], 0 };
@@ -86,5 +99,6 @@ int main(int argc, char** argv)
     logger("INFO", "Closing socket");
     close(sockfd);
     logger("INFO", "Socket closed");
+    logger("INFO", "Closing application");
     return 0;
 }

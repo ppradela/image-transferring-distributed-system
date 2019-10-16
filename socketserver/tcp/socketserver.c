@@ -19,7 +19,7 @@ void logger(char tag[], char message[])
 
     strftime(tm_buff, 26, "%Y-%m-%d %H:%M:%S", tm_info);
 
-    f = fopen("logs.log", "a+");
+    f = fopen("logs.log", "a");
     printf("%s [%s]: %s\n", tm_buff, tag, message);
     fprintf(f, "%s [%s]: %s\n", tm_buff, tag, message);
     fclose(f);
@@ -77,18 +77,22 @@ int main(int argc, char const* argv[])
         exit(EXIT_FAILURE);
     }
 
-    logger("INFO", "Accepting a connection");
     if ((new_socket = accept(server_fd, (struct sockaddr*)&address, (socklen_t*)&addrlen)) < 0) {
         logger("ERROR", "Problem occured while accepting a connection");
         exit(EXIT_FAILURE);
     }
 
-    FILE* fp = fopen(name_with_extension, "wb+");
+    FILE* fp = fopen(name_with_extension, "wb");
 
     logger("INFO", "Waiting for data");
     while ((valread = read(new_socket, buffer, 16)) > 0) {
-        int i;
-        for (i = 0; i < 16; i += 2) {
+        if (valread<0)
+        {
+            logger("ERROR", "Problem occured while receiving data");
+            exit(EXIT_FAILURE);
+        }
+
+        for (int i = 0; i < 16; i += 2) {
             unsigned char val;
             char tmp_hexbuf[3] = { buffer[i], buffer[i + 1], 0 };
             val = strtol(tmp_hexbuf, NULL, 16);

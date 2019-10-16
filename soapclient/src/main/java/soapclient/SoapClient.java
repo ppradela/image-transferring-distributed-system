@@ -23,8 +23,8 @@ public class SoapClient {
     public static void main(String[] args) throws IOException {
         Logger logger = LogManager.getRootLogger();
         Layout layout = new PatternLayout("%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] - %m%n");
-        FileAppender fileAppender = new FileAppender(layout, Paths.get(".").normalize().toAbsolutePath()
-                + File.separator + "soapclient" + File.separator + "logs.log");
+        FileAppender fileAppender = new FileAppender(layout,
+                Paths.get(".").normalize().toAbsolutePath() + File.separator + "logs.log");
         ConsoleAppender consoleAppender = new ConsoleAppender(layout);
         logger.addAppender(fileAppender);
         logger.addAppender(consoleAppender);
@@ -69,17 +69,21 @@ public class SoapClient {
         } catch (IOException e) {
             logger.fatal(e.getMessage());
             logger.info("Closing application");
-            e.printStackTrace();
             System.exit(0);
         }
 
-        SoapService service = new SoapService();
-        logger.info("Creating SOAP connection");
-        Soap soap = service.getSoapPort();
-        logger.info("Sending image");
-        soap.sendImageHexString(imageHexString);
-        logger.info("Image sended");
-
-        logger.info("Closing application");
+        try {
+            SoapService service = new SoapService();
+            logger.info("Creating SOAP connection");
+            Soap soap = service.getSoapPort();
+            logger.info("Sending image");
+            soap.sendImageHexString(imageHexString);
+            logger.info("Image sent");
+            logger.info("Closing application");
+        } catch (Exception e) {
+            logger.fatal(e.getMessage());
+            logger.info("Closing application");
+            System.exit(0);
+        }
     }
 }

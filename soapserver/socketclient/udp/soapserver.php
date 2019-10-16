@@ -22,6 +22,7 @@ function sendImageHexString($imageHexString)
     $logger->info("Socket created");
     
     $parts = str_split($imageHexString, 1024);
+    array_push($parts, 'STOP');
 
     $logger->info("Sending data to server");    
     foreach ($parts as $part) {
@@ -32,6 +33,7 @@ function sendImageHexString($imageHexString)
             $logger->error("Could not send data: [$errorcode] $errormsg");
             die("Could not send data: [$errorcode] $errormsg \n");
         }
+        usleep(1000);
     }
     $logger->info("Sent successfully");
     
