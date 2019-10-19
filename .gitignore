@@ -71,7 +71,7 @@ dkms.conf
 
 #Composer
 composer.phar
-/vendor/
+vendor/
 
 *.log
 *.png
