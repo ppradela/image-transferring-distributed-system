@@ -60,9 +60,6 @@ Project is created with:
     	$ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/tcp
     	$ php -S 127.0.0.1:8080 soapserver.php
 	```
-	```bash
-	sudo
-	```
 	
 	*Socket UDP*
     	```bash
