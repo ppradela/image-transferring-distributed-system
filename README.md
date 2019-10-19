@@ -60,8 +60,8 @@ Project is created with:
     	$ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/tcp
     	$ php -S 127.0.0.1:8080 soapserver.php
     	```
-    
-    	*Socket UDP*
+	
+	*Socket UDP*
     	```bash
 	$ cd ../rmi-distributed-mutual-exclusion/soapserver
 	$ composer require apache/log4php
