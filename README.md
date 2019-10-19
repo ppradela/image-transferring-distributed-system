@@ -59,14 +59,13 @@ Project is created with:
 	$ composer require apache/log4php
     	$ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/tcp
     	$ php -S 127.0.0.1:8080 soapserver.php
-    	```
+	```
 	
 	*Socket UDP*
     	```bash
-	$ cd ../rmi-distributed-mutual-exclusion/soapserver
-	$ composer require apache/log4php
-    	$ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/udp
-    	$ php -S 127.0.0.1:8080 soapserver.php
+    	$ cd ../rmi-distributed-mutual-exclusion/soapclient
+    	$ mvn compile
+    	$ mvn exec:java -Dexec.mainClass=soapclient.SoapClient -Dexec.args='/path/to/image.jpg'
     	```
 
     - Run soap client with argument (path to JPEG image which will be send)
