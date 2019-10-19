@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__DIR__, 2) . '/log4php/Logger.php';
+require dirname(__DIR__, 2) . '/vendor/autoload.php';
 Logger::configure(dirname(__DIR__, 2) . '/config.xml');
 
 function sendImageHexString($imageHexString)

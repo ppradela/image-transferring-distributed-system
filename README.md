@@ -27,9 +27,14 @@ Project is created with:
     $ sudo nano /etc/php/7.2/cli/php.ini 
     $ sudo /etc/init.d/apache2 restart
     ```
-4. Install GCC
-3. Clone this repository
-4. To run this project:
+4. Install [PHP Composer](https://getcomposer.org)
+	```bash
+    $ sudo curl -s https://getcomposer.org/installer | php
+    $ sudo mv composer.phar /usr/local/bin/composer
+    ```
+5. Install GCC
+6. Clone this repository
+7. To run this project:
     - Run socket server with argument (name for file which will be saved as PNG)
     
     	*Socket TCP*
