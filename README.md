@@ -36,34 +36,34 @@ $ sudo mv composer.phar /usr/local/bin/composer
 6. Clone this repository
 7. To run this project:
     - Run socket server with argument (name for file which will be saved as PNG)
-    *Socket TCP*
-    ```bash
-    $ cd ../rmi-distributed-mutual-exclusion/socketserver/tcp
-    $ gcc socketserver.c -o socketserver
-    $ ./socketserver
-    ```
-    *Socket UDP*
-    ```bash
-    $ cd ../rmi-distributed-mutual-exclusion/socketserver/udp
-    $ gcc socketserver.c -o socketserver
-    $ ./socketserver
-    ```
+    	*Socket TCP*
+    	```bash
+    	$ cd ../rmi-distributed-mutual-exclusion/socketserver/tcp
+    	$ gcc socketserver.c -o socketserver
+    	$ ./socketserver
+    	```
+    	*Socket UDP*
+    	```bash
+    	$ cd ../rmi-distributed-mutual-exclusion/socketserver/udp
+    	$ gcc socketserver.c -o socketserver
+    	$ ./socketserver
+   	```
     
     - Run soap server/socket client
-    *Socket TCP*
-    ```bash
-    $ cd ../rmi-distributed-mutual-exclusion/soapserver
-    $ composer require apache/log4php
-    $ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/tcp
-    $ php -S 127.0.0.1:8080 soapserver.php
-    ```
-    *Socket UDP*
-    ```bash
-    $ cd ../rmi-distributed-mutual-exclusion/soapserver
-    $ composer require apache/log4php
-    $ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/udp
-    $ php -S 127.0.0.1:8080 soapserver.php
-    ```
+    	*Socket TCP*
+    	```bash
+    	$ cd ../rmi-distributed-mutual-exclusion/soapserver
+    	$ composer require apache/log4php
+    	$ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/tcp
+    	$ php -S 127.0.0.1:8080 soapserver.php
+    	```
+    	*Socket UDP*
+    	```bash
+    	$ cd ../rmi-distributed-mutual-exclusion/soapserver
+    	$ composer require apache/log4php
+    	$ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/udp
+    	$ php -S 127.0.0.1:8080 soapserver.php
+    	```
     
     - Run soap client with argument (path to JPEG image which will be send)
     ```bash
