@@ -69,6 +69,10 @@ dkms.conf
 #VS Code
 .vscode/
 
+#Composer
+composer.phar
+/vendor/
+
 *.log
 *.png
 *.jpg
