@@ -67,7 +67,7 @@ Project is created with:
 	$ composer require apache/log4php
     	$ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/udp
     	$ php -S 127.0.0.1:8080 soapserver.php
-    	```bash
+    	```
 
     - Run soap client with argument (path to JPEG image which will be send)
     
