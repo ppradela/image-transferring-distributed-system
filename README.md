@@ -19,23 +19,24 @@ Project is created with:
 
 ## Setup
 1. Install Java Runtime Environment
-1. Install [Maven](https://maven.apache.org/install.html)
-1. Install PHP and enable extensions: `soap` and `xml`
+2. Install [Maven](https://maven.apache.org/install.html)
+3. Install PHP and enable extensions: `soap` and `xml`
    - For transferring large images, change properties `post_max_size` and `upload_max_filesize` in `php.ini` according to your own needs
    ```bash
    $ sudo nano /etc/php/7.2/apache2/php.ini
    $ sudo nano /etc/php/7.2/cli/php.ini
    $ sudo /etc/init.d/apache2 restart
    ```
-1. Install [PHP Composer](https://getcomposer.org)
+4. Install [PHP Composer](https://getcomposer.org)
 ```bash
 $ sudo curl -s https://getcomposer.org/installer | php
 $ sudo mv composer.phar /usr/local/bin/composer
 ```
-1. Install GCC
-1. Clone this repository
-1. To run this project:
+5. Install GCC
+6. Clone this repository
+7. To run this project:
     - Run socket server with argument (name for file which will be saved as PNG)
+    
     *Socket TCP*
     ```bash
     $ cd ../rmi-distributed-mutual-exclusion/socketserver/tcp
@@ -49,6 +50,7 @@ $ sudo mv composer.phar /usr/local/bin/composer
     $ ./socketserver
     ```
     - Run soap server/socket client
+    
     *Socket TCP*
     ```bash
     $ cd ../rmi-distributed-mutual-exclusion/soapserver
