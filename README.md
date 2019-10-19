@@ -28,7 +28,7 @@ Project is created with:
     $ sudo /etc/init.d/apache2 restart
     ```
 4. Install [PHP Composer](https://getcomposer.org)
-	```bash
+    ```bash
     $ sudo curl -s https://getcomposer.org/installer | php
     $ sudo mv composer.phar /usr/local/bin/composer
     ```
