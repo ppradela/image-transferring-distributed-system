@@ -48,7 +48,6 @@ $ sudo mv composer.phar /usr/local/bin/composer
     	$ gcc socketserver.c -o socketserver
     	$ ./socketserver
 	```    
-    
     - Run soap server/socket client
     	*Socket TCP*
     	```bash
@@ -63,8 +62,7 @@ $ sudo mv composer.phar /usr/local/bin/composer
     	$ composer require apache/log4php
     	$ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/udp
     	$ php -S 127.0.0.1:8080 soapserver.php
-    	```
-    
+    	```    
     - Run soap client with argument (path to JPEG image which will be send)
     ```bash
     $ cd ../rmi-distributed-mutual-exclusion/soapclient
