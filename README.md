@@ -32,7 +32,7 @@ Project is created with:
 $ sudo curl -s https://getcomposer.org/installer | php
 $ sudo mv composer.phar /usr/local/bin/composer
 ```
-5. Install GCC
+5. Install [GCC](https://gcc.gnu.org)
 6. Clone this repository
 7. To run this project:
     - Run socket server with argument (name for file which will be saved as PNG)
