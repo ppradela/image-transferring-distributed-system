@@ -9,12 +9,12 @@ Simple distributed system for image transferring, running on Linux.
 ## Technologies
 Project is created with:
 * Java version: 11
-	* JAX-WS framework version: 2.3.2
-	* Apache Commons IO library version: 2.4
-	* Apache Log4j library version: 1.2.15
-	* Maven version: 3.6.2
+* JAX-WS framework version: 2.3.2
+* Apache Commons IO library version: 2.4
+* Apache Log4j library version: 1.2.15
+* Maven version: 3.6.2
 * PHP version : 7.2
-	* Apache log4php library version: 2.3
+* Apache log4php library version: 2.3
 * C
 
 ## Setup
