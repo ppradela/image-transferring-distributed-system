@@ -75,3 +75,6 @@ vendor/
 /soap-client/soap-client.iml
 /soap-client/.idea/
 /soap-client/logs/
+/soap-server/logs/
+/soap-server/composer.json
+/soap-server/composer.lock

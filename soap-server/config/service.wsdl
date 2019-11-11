@@ -1,12 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
-    xmlns:wsp="http://www.w3.org/ns/ws-policy" 
-    xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" 
-    xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" 
-    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-    xmlns:tns="http://localhost/SoapService" 
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-    xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://localhost/SoapService" name="SoapService">
+<definitions
+        xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:tns="http://localhost/SoapService"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://localhost/SoapService" name="SoapService">
     <types/>
     <message name="sendImageHexString">
         <part name="imageHexString" type="xsd:string"/>
@@ -14,8 +12,10 @@
     <message name="sendImageHexStringResponse"/>
     <portType name="Soap">
         <operation name="sendImageHexString">
-            <input wsam:Action="http://localhost/SoapService/Soap/sendImageHexStringRequest" message="tns:sendImageHexString"/>
-            <output wsam:Action="http://localhost/SoapService/Soap/sendImageHexStringResponse" message="tns:sendImageHexStringResponse"/>
+            <input wsam:Action="http://localhost/SoapService/Soap/sendImageHexStringRequest"
+                   message="tns:sendImageHexString"/>
+            <output wsam:Action="http://localhost/SoapService/Soap/sendImageHexStringResponse"
+                    message="tns:sendImageHexStringResponse"/>
         </operation>
     </portType>
     <binding name="SoapPortBinding" type="tns:Soap">

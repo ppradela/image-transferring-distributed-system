@@ -15,6 +15,7 @@ Project is created with:
 * Maven version: 3.6
 * PHP version : 7.3
 * Apache log4php version: 2.3
+* Composer version: 1.9.1
 * C
 
 ## Setup
@@ -34,7 +35,12 @@ $ sudo mv composer.phar /usr/local/bin/composer
 ```
 5. Install [GCC](https://gcc.gnu.org)
 6. Clone this repository
-7. To run this project:
+7. Download Composer dependencies
+```bash
+$ cd ../rmi-distributed-mutual-exclusion/soap-server
+$ composer require apache/log4php
+```
+8. To run this project:
     - Run socket server with argument (name for file which will be saved as PNG)
     
         *Socket TCP*
@@ -53,21 +59,17 @@ $ sudo mv composer.phar /usr/local/bin/composer
     
         *Socket TCP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/soapserver
-        $ composer require apache/log4php
-        $ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/tcp
+        $ cd ../rmi-distributed-mutual-exclusion/soap-server/scr/socket/tcp
         $ php -S 127.0.0.1:8080 soapserver.php
         ```
         *Socket UDP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/soapserver
-        $ composer require apache/log4php
-        $ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/udp
+        $ cd ../rmi-distributed-mutual-exclusion/soap-server/src/socket/udp
         $ php -S 127.0.0.1:8080 soapserver.php
         ```
     - Run soap client with argument (path to JPEG image which will be send)
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/soapclient
+        $ cd ../rmi-distributed-mutual-exclusion/soap-client
         $ mvn compile
-        $ mvn exec:java -Dexec.mainClass=soapclient.SoapClient -Dexec.args='/path/to/image.jpg'
+        $ mvn exec:java -Dexec.mainClass=image.transfer.soap.client.SoapClient -Dexec.args='/path/to/image.jpg'
         ```
