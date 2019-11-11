@@ -72,9 +72,16 @@ vendor/
 
 *.png
 *.jpg
+*.log
 /soap-client/soap-client.iml
 /soap-client/.idea/
 /soap-client/logs/
+
+/soap-server/.idea/
 /soap-server/logs/
 /soap-server/composer.json
 /soap-server/composer.lock
+
+/socket-server/.idea/
+/socket-server/cmake-build-debug/
+/socket-server/CMakeLists.txt

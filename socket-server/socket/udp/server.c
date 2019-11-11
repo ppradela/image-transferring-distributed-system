@@ -2,47 +2,42 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <sys/types.h>
 #include <sys/socket.h>
-#include <arpa/inet.h>
 #include <netinet/in.h>
 #include <time.h>
 
 #define PORT 9999
 #define MAXLINE 1024
 
-void logger(char tag[], char message[])
-{
-    FILE* f;
+void logger(char tag[], char message[]) {
+    FILE *f;
     char tm_buff[26];
-    struct tm* tm_info;
+    struct tm *tm_info;
     time_t now;
     time(&now);
     tm_info = localtime(&now);
 
     strftime(tm_buff, 26, "%Y-%m-%d %H:%M:%S", tm_info);
 
-    f = fopen("logs.log", "a+");
+    f = fopen("server.log", "a+");
     printf("%s [%s]: %s\n", tm_buff, tag, message);
     fprintf(f, "%s [%s]: %s\n", tm_buff, tag, message);
     fclose(f);
     bzero(tm_buff, 26);
 }
 
-int main(int argc, char** argv)
-{
-    int sockfd,n;
+int main(int argc, char **argv) {
+    int sockfd, n;
     char buffer[MAXLINE];
     struct sockaddr_in servaddr;
-    char* name_with_extension;
-    char* extension = ".png";
-    char* stop = "STOP";
+    char *name_with_extension;
+    char *extension = ".png";
+    char *stop = "STOP";
 
     if (argc > 2) {
         logger("ERROR", "Too many arguments");
         return 0;
-    }
-    else if (argc <= 1) {
+    } else if (argc <= 1) {
         logger("ERROR", "Proper usage: ./program filename");
         return 0;
     }
@@ -64,31 +59,29 @@ int main(int argc, char** argv)
     servaddr.sin_port = htons(PORT);
 
     logger("INFO", "Binding the socket with the address");
-    if (bind(sockfd, (const struct sockaddr*)&servaddr, sizeof(servaddr)) < 0) {
+    if (bind(sockfd, (const struct sockaddr *) &servaddr, sizeof(servaddr)) < 0) {
         logger("ERROR", "Bind failed");
         exit(EXIT_FAILURE);
     }
 
-    FILE* fp = fopen(name_with_extension, "wb+");
+    FILE *fp = fopen(name_with_extension, "wb+");
 
     logger("INFO", "Waiting for data");
     while (1) {
-        n=recv(sockfd, (char*)buffer, MAXLINE, 0);
-        if (n<0)
-        {
+        n = (int) recv(sockfd, (char *) buffer, MAXLINE, 0);
+        if (n < 0) {
             logger("ERROR", "Problem occured while receiving data");
             exit(EXIT_FAILURE);
-        }        
+        }
 
-        if (strcmp(buffer,stop)==0)
-        {
+        if (strcmp(buffer, stop) == 0) {
             break;
         }
-        
+
         for (int i = 0; i < MAXLINE; i += 2) {
             unsigned char val;
-            char tmp_hexbuf[3] = { buffer[i], buffer[i + 1], 0 };
-            val = strtol(tmp_hexbuf, NULL, 16);
+            char tmp_hexbuf[3] = {buffer[i], buffer[i + 1], 0};
+            val = (unsigned char) strtol(tmp_hexbuf, NULL, 16);
             fputc(val, fp);
         }
         bzero(buffer, MAXLINE);

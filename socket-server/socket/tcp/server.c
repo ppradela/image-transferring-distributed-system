@@ -8,39 +8,36 @@
 
 #define PORT 25003
 
-void logger(char tag[], char message[])
-{
-    FILE* f;
+void logger(char tag[], char message[]) {
+    FILE *f;
     char tm_buff[26];
-    struct tm* tm_info;
+    struct tm *tm_info;
     time_t now;
     time(&now);
     tm_info = localtime(&now);
 
     strftime(tm_buff, 26, "%Y-%m-%d %H:%M:%S", tm_info);
 
-    f = fopen("logs.log", "a");
+    f = fopen("server.log", "a");
     printf("%s [%s]: %s\n", tm_buff, tag, message);
     fprintf(f, "%s [%s]: %s\n", tm_buff, tag, message);
     fclose(f);
     bzero(tm_buff, 26);
 }
 
-int main(int argc, char const* argv[])
-{
+int main(int argc, char const *argv[]) {
     int server_fd, new_socket, valread;
     struct sockaddr_in address;
     int opt = 1;
     int addrlen = sizeof(address);
-    char buffer[16] = { 0 };
-    char* name_with_extension;
-    char* extension = ".png";
+    char buffer[16] = {0};
+    char *name_with_extension;
+    char *extension = ".png";
 
     if (argc > 2) {
         logger("ERROR", "Too many arguments");
         return 0;
-    }
-    else if (argc <= 1) {
+    } else if (argc <= 1) {
         logger("ERROR", "Proper usage: ./program filename");
         return 0;
     }
@@ -66,7 +63,7 @@ int main(int argc, char const* argv[])
     address.sin_port = htons(PORT);
 
     logger("INFO", "Binding");
-    if (bind(server_fd, (struct sockaddr*)&address, sizeof(address)) < 0) {
+    if (bind(server_fd, (struct sockaddr *) &address, sizeof(address)) < 0) {
         logger("ERROR", "Bind failed");
         exit(EXIT_FAILURE);
     }
@@ -77,25 +74,24 @@ int main(int argc, char const* argv[])
         exit(EXIT_FAILURE);
     }
 
-    if ((new_socket = accept(server_fd, (struct sockaddr*)&address, (socklen_t*)&addrlen)) < 0) {
+    if ((new_socket = accept(server_fd, (struct sockaddr *) &address, (socklen_t *) &addrlen)) < 0) {
         logger("ERROR", "Problem occured while accepting a connection");
         exit(EXIT_FAILURE);
     }
 
-    FILE* fp = fopen(name_with_extension, "wb");
+    FILE *fp = fopen(name_with_extension, "wb");
 
     logger("INFO", "Waiting for data");
-    while ((valread = read(new_socket, buffer, 16)) > 0) {
-        if (valread<0)
-        {
+    while ((valread = (int) read(new_socket, buffer, 16)) > 0) {
+        if (valread < 0) {
             logger("ERROR", "Problem occured while receiving data");
             exit(EXIT_FAILURE);
         }
 
         for (int i = 0; i < 16; i += 2) {
             unsigned char val;
-            char tmp_hexbuf[3] = { buffer[i], buffer[i + 1], 0 };
-            val = strtol(tmp_hexbuf, NULL, 16);
+            char tmp_hexbuf[3] = {buffer[i], buffer[i + 1], 0};
+            val = (unsigned char) strtol(tmp_hexbuf, NULL, 16);
             fputc(val, fp);
         }
         bzero(buffer, 16);

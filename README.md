@@ -45,21 +45,21 @@ $ composer require apache/log4php
     
         *Socket TCP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/socketserver/tcp
-        $ gcc socketserver.c -o socketserver
-        $ ./socketserver
+        $ cd ../rmi-distributed-mutual-exclusion/socket-server/src/socket/tcp
+        $ gcc server.c -o server
+        $ ./server
         ```
         *Socket UDP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/socketserver/udp
-        $ gcc socketserver.c -o socketserver
-        $ ./socketserver
+        $ cd ../rmi-distributed-mutual-exclusion/socket-server/src/socket/udp
+        $ gcc server.c -o server
+        $ ./server
         ```
     - Run soap server/socket client
     
         *Socket TCP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/soap-server/scr/socket/tcp
+        $ cd ../rmi-distributed-mutual-exclusion/soap-server/src/socket/tcp
         $ php -S 127.0.0.1:8080 soapserver.php
         ```
         *Socket UDP*
