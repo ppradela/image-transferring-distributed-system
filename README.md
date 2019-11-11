@@ -45,13 +45,13 @@ $ composer require apache/log4php
     
         *Socket TCP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/socket-server/src/socket/tcp
+        $ cd ../rmi-distributed-mutual-exclusion/socket-server/tcp
         $ gcc server.c -o server
         $ ./server
         ```
         *Socket UDP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/socket-server/src/socket/udp
+        $ cd ../rmi-distributed-mutual-exclusion/socket-server/udp
         $ gcc server.c -o server
         $ ./server
         ```
