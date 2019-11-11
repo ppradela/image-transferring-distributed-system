@@ -1,33 +1,21 @@
-package soapclient;
+package image.transfer.soap.client;
 
+import org.apache.commons.io.FilenameUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 
-import javax.imageio.ImageIO;
-
-import org.apache.commons.io.FilenameUtils;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.FileAppender;
-import org.apache.log4j.Layout;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
-
-public class SoapClient {
+class SoapClient {
 
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
-    public static void main(String[] args) throws IOException {
-        Logger logger = LogManager.getRootLogger();
-        Layout layout = new PatternLayout("%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] - %m%n");
-        FileAppender fileAppender = new FileAppender(layout,
-                Paths.get(".").normalize().toAbsolutePath() + File.separator + "logs.log");
-        ConsoleAppender consoleAppender = new ConsoleAppender(layout);
-        logger.addAppender(fileAppender);
-        logger.addAppender(consoleAppender);
+    public static void main(String[] args) {
+        Logger logger = LogManager.getLogger();
 
         logger.info("Starting application");
 

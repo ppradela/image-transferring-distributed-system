@@ -1,17 +1,12 @@
-package soapclient;
+package image.transfer.soap.client;
 
+import javax.xml.namespace.QName;
+import javax.xml.ws.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-import javax.xml.ws.WebEndpoint;
-import javax.xml.ws.WebServiceClient;
-import javax.xml.ws.WebServiceException;
-import javax.xml.ws.WebServiceFeature;
-
 @WebServiceClient(name = "SoapService", targetNamespace = "http://localhost/SoapService", wsdlLocation = "http://localhost:8080/soapserver/SoapService?wsdl")
-public class SoapService extends Service {
+class SoapService extends Service {
 
     private final static URL SOAPSERVICE_WSDL_LOCATION;
     private final static WebServiceException SOAPSERVICE_EXCEPTION;
@@ -29,7 +24,7 @@ public class SoapService extends Service {
         SOAPSERVICE_EXCEPTION = e;
     }
 
-    public SoapService() {
+    SoapService() {
         super(__getWsdlLocation(), SOAPSERVICE_QNAME);
     }
 
@@ -53,20 +48,15 @@ public class SoapService extends Service {
         super(wsdlLocation, serviceName, features);
     }
 
-    @WebEndpoint(name = "SoapPort")
-    public Soap getSoapPort() {
-        return super.getPort(new QName("http://localhost/SoapService", "SoapPort"), Soap.class);
-    }
-
-    @WebEndpoint(name = "SoapPort")
-    public Soap getSoapPort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://localhost/SoapService", "SoapPort"), Soap.class, features);
-    }
-
     private static URL __getWsdlLocation() {
         if (SOAPSERVICE_EXCEPTION != null) {
             throw SOAPSERVICE_EXCEPTION;
         }
         return SOAPSERVICE_WSDL_LOCATION;
+    }
+
+    @WebEndpoint(name = "SoapPort")
+    Soap getSoapPort() {
+        return super.getPort(new QName("http://localhost/SoapService", "SoapPort"), Soap.class);
     }
 }

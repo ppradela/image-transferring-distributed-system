@@ -66,13 +66,12 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-#VS Code
-.vscode/
-
 #Composer
 composer.phar
 vendor/
 
-*.log
 *.png
 *.jpg
+/soap-client/soap-client.iml
+/soap-client/.idea/
+/soap-client/logs/

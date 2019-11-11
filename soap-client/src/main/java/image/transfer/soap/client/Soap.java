@@ -1,4 +1,4 @@
-package soapclient;
+package image.transfer.soap.client;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -12,6 +12,6 @@ public interface Soap {
 
     @WebMethod
     @Action(input = "http://localhost/SoapService/Soap/sendImageHexStringRequest", output = "http://localhost/SoapService/Soap/sendImageHexStringResponse")
-    public void sendImageHexString(
+    void sendImageHexString(
             @WebParam(name = "imageHexString", partName = "imageHexString") String imageHexString);
 }

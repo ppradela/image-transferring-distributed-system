@@ -9,12 +9,12 @@ Simple distributed system for image transferring, running on Linux.
 ## Technologies
 Project is created with:
 * Java version: 11
-* JAX-WS framework version: 2.3.2
-* Apache Commons IO library version: 2.4
-* Apache Log4j library version: 1.2.15
-* Maven version: 3.6.2
-* PHP version : 7.2
-* Apache log4php library version: 2.3
+* JAX-WS version: 2.3.1
+* Apache Commons IO version: 1.3.2
+* Apache Log4j version: 2.12.1
+* Maven version: 3.6
+* PHP version : 7.3
+* Apache log4php version: 2.3
 * C
 
 ## Setup
@@ -37,37 +37,37 @@ $ sudo mv composer.phar /usr/local/bin/composer
 7. To run this project:
     - Run socket server with argument (name for file which will be saved as PNG)
     
-    *Socket TCP*
-    ```bash
-    $ cd ../rmi-distributed-mutual-exclusion/socketserver/tcp
-    $ gcc socketserver.c -o socketserver
-    $ ./socketserver
-    ```
-    *Socket UDP*
-    ```bash
-    $ cd ../rmi-distributed-mutual-exclusion/socketserver/udp
-    $ gcc socketserver.c -o socketserver
-    $ ./socketserver
-    ```
+        *Socket TCP*
+        ```bash
+        $ cd ../rmi-distributed-mutual-exclusion/socketserver/tcp
+        $ gcc socketserver.c -o socketserver
+        $ ./socketserver
+        ```
+        *Socket UDP*
+        ```bash
+        $ cd ../rmi-distributed-mutual-exclusion/socketserver/udp
+        $ gcc socketserver.c -o socketserver
+        $ ./socketserver
+        ```
     - Run soap server/socket client
     
-    *Socket TCP*
-    ```bash
-    $ cd ../rmi-distributed-mutual-exclusion/soapserver
-    $ composer require apache/log4php
-    $ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/tcp
-    $ php -S 127.0.0.1:8080 soapserver.php
-    ```
-    *Socket UDP*
-    ```bash
-    $ cd ../rmi-distributed-mutual-exclusion/soapserver
-    $ composer require apache/log4php
-    $ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/udp
-    $ php -S 127.0.0.1:8080 soapserver.php
-    ```
+        *Socket TCP*
+        ```bash
+        $ cd ../rmi-distributed-mutual-exclusion/soapserver
+        $ composer require apache/log4php
+        $ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/tcp
+        $ php -S 127.0.0.1:8080 soapserver.php
+        ```
+        *Socket UDP*
+        ```bash
+        $ cd ../rmi-distributed-mutual-exclusion/soapserver
+        $ composer require apache/log4php
+        $ cd ../rmi-distributed-mutual-exclusion/soapserver/socketclient/udp
+        $ php -S 127.0.0.1:8080 soapserver.php
+        ```
     - Run soap client with argument (path to JPEG image which will be send)
-    ```bash
-    $ cd ../rmi-distributed-mutual-exclusion/soapclient
-    $ mvn compile
-    $ mvn exec:java -Dexec.mainClass=soapclient.SoapClient -Dexec.args='/path/to/image.jpg'
-    ```
+        ```bash
+        $ cd ../rmi-distributed-mutual-exclusion/soapclient
+        $ mvn compile
+        $ mvn exec:java -Dexec.mainClass=soapclient.SoapClient -Dexec.args='/path/to/image.jpg'
+        ```
