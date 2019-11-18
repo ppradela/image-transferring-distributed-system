@@ -1,4 +1,4 @@
-package image.transfer.soap.client;
+package com.pradela.imagetransferring.soapclient;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

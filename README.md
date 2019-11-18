@@ -71,5 +71,5 @@ $ composer require apache/log4php
         ```bash
         $ cd ../rmi-distributed-mutual-exclusion/soap-client
         $ mvn compile
-        $ mvn exec:java -Dexec.mainClass=image.transfer.soap.client.SoapClient -Dexec.args='/path/to/image.jpg'
+        $ mvn exec:java -Dexec.mainClass=com.pradela.imagetransferring.soapclient.SoapClient -Dexec.args='/path/to/image.jpg'
         ```

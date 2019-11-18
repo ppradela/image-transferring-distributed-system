@@ -1,4 +1,4 @@
-package image.transfer.soap.client;
+package com.pradela.imagetransferring.soapclient;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.logging.log4j.LogManager;
