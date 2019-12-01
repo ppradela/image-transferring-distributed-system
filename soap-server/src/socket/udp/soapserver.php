@@ -15,6 +15,7 @@ function sendImageHexString($imageHexString)
     if (!($sock = socket_create(AF_INET, SOCK_DGRAM, 0))) {
 
         $logger->error("Couldn't create socket");
+        die();
     }
 
     $logger->info("Socket created");
@@ -27,6 +28,7 @@ function sendImageHexString($imageHexString)
         if (!socket_sendto($sock, $part, strlen($part), 0, $server, $port)) {
 
             $logger->error("Could not send data");
+            die();
         }
         usleep(1000);
     }

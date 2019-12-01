@@ -11,16 +11,16 @@ function sendImageHexString($imageHexString)
     $port = 25003;
 
     $logger->info("Creating socket");
-    $socket = socket_create(AF_INET, SOCK_STREAM, 0) or $logger->error("Could not create socket");
+    $socket = socket_create(AF_INET, SOCK_STREAM, 0) or ($logger->error("Could not create socket") && die());
     $logger->info("Socket created");
 
     $logger->info("Connecting to server");
-    $result = socket_connect($socket, $host, $port) or $logger->error("Could not connect to server");
+    $result = socket_connect($socket, $host, $port) or ($logger->error("Could not connect to server") && die());
 
     $logger->info("Sending data to server");
     $parts = str_split($imageHexString, 16);
     foreach ($parts as $part) {
-        socket_write($socket, $part, strlen($part)) or $logger->error("Could not send data to server");
+        socket_write($socket, $part, strlen($part)) or ($logger->error("Could not send data to server") && die());
     }
     $logger->info("Sent successfully");
 

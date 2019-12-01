@@ -4,7 +4,7 @@
         <layout class="LoggerLayoutPattern">
             <param name="conversionPattern" value="%d{Y-m-d H:i:s,u} [%p] %c - %m%n"/>
         </layout>
-        <param name="file" value="/logs/socket/tcp/app.log"/>
+        <param name="file" value="../../../logs/socket/tcp/app.log"/>
         <param name="append" value="true"/>
     </appender>
     <appender name="console" class="LoggerAppenderConsole">
