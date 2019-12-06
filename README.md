@@ -34,26 +34,27 @@ $ sudo curl -s https://getcomposer.org/installer | php
 $ sudo mv composer.phar /usr/local/bin/composer
 ```
 5. Install [GCC](https://gcc.gnu.org)
-6. Clone this repository
-7. Download Composer dependencies
+6. Install MAKE for running Makefiles
+7. Clone this repository
+8. Download Composer dependencies
 ```bash
 $ cd ../rmi-distributed-mutual-exclusion/soap-server
 $ composer require apache/log4php
 ```
-8. To run this project:
+9. To run this project:
     - Run socket server with argument (name for file which will be saved as PNG)
     
         *Socket TCP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/socket-server/tcp
-        $ gcc server.c -o server
-        $ ./server
+        $ cd ../rmi-distributed-mutual-exclusion/socket-tcp-server
+        $ make
+        $ ./bin/main filename_for_downloading_image
         ```
         *Socket UDP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/socket-server/udp
-        $ gcc server.c -o server
-        $ ./server
+        $ cd ../rmi-distributed-mutual-exclusion/socket-udp-server
+        $ make
+        $ ./bin/main filename_for_downloading_image
         ```
     - Run soap server/socket client
     

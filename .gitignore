@@ -81,7 +81,10 @@ vendor/
 /soap-server/logs/
 /soap-server/composer.json
 /soap-server/composer.lock
-
-/socket-server/.idea/
-/socket-server/cmake-build-debug/
-/socket-server/CMakeLists.txt
+socket-tcp-server/.vscode/launch.json
+socket-tcp-server/.vscode/tasks.json
+socket-tcp-server/bin/
+socket-udp-server/.vscode/launch.json
+socket-udp-server/.vscode/settings.json
+socket-udp-server/.vscode/tasks.json
+socket-udp-server/bin/
