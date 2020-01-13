@@ -1,4 +1,4 @@
-package com.pradela.imagetransferring.soapclient;
+package imagetransferring.soapclient;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.*;

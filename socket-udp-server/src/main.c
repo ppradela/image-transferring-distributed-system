@@ -90,7 +90,7 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	FILE *fp = fopen(name_with_extension, "wb+");
+	FILE *fp = fopen(downloads_path, "wb+");
 
 	logger("INFO", "Waiting for data");
 	while (1)

@@ -88,3 +88,8 @@ socket-udp-server/.vscode/launch.json
 socket-udp-server/.vscode/settings.json
 socket-udp-server/.vscode/tasks.json
 socket-udp-server/bin/
+.vscode/*
+soap-client/.factorypath
+soap-client/.classpath
+soap-client/.project
+soap-client/.settings/*

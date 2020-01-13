@@ -8,12 +8,11 @@ Simple distributed system for image transferring, running on Linux.
 
 ## Technologies
 Project is created with:
-* Java version: 11
-* JAX-WS version: 2.3.2
+* Java version: 8
 * Apache Commons IO version: 1.3.2
 * Apache Log4j version: 2.12.1
-* Maven version: 3.6
-* PHP version : 7.3
+* Maven version: 3.6.3
+* PHP version : 7.4.1
 * Apache log4php version: 2.3
 * Composer version: 1.9.1
 * C
@@ -38,7 +37,7 @@ $ sudo mv composer.phar /usr/local/bin/composer
 7. Clone this repository
 8. Download Composer dependencies
 ```bash
-$ cd ../rmi-distributed-mutual-exclusion/soap-server
+$ cd ../image-transferring-distributed-system/soap-server
 $ composer require apache/log4php
 ```
 9. To run this project:
@@ -46,13 +45,15 @@ $ composer require apache/log4php
     
         *Socket TCP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/socket-tcp-server
+        $ cd ../image-transferring-distributed-system/socket-tcp-server
+        $ mkdir bin
         $ make
         $ ./bin/main filename_for_downloading_image
         ```
         *Socket UDP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/socket-udp-server
+        $ cd ../image-transferring-distributed-system/socket-udp-server
+        $ mkdir bin
         $ make
         $ ./bin/main filename_for_downloading_image
         ```
@@ -60,17 +61,17 @@ $ composer require apache/log4php
     
         *Socket TCP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/soap-server/src/socket/tcp
+        $ cd ../image-transferring-distributed-system/soap-server/src/socket/tcp
         $ php -S 127.0.0.1:8080 soapserver.php
         ```
         *Socket UDP*
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/soap-server/src/socket/udp
+        $ cd ../image-transferring-distributed-system/soap-server/src/socket/udp
         $ php -S 127.0.0.1:8080 soapserver.php
         ```
     - Run soap client with argument (path to JPEG image which will be send)
         ```bash
-        $ cd ../rmi-distributed-mutual-exclusion/soap-client
+        $ cd ../image-transferring-distributed-system/soap-client
         $ mvn compile
-        $ mvn exec:java -Dexec.mainClass=com.pradela.imagetransferring.soapclient.SoapClient -Dexec.args='/path/to/image.jpg'
+        $ mvn exec:java -Dexec.mainClass=imagetransferring.soapclient.SoapClient -Dexec.args='/path/to/image.jpg'
         ```
