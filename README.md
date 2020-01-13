@@ -23,9 +23,7 @@ Project is created with:
 3. Install PHP and enable extensions: `soap` and `xml`
    - For transferring large images, change properties `post_max_size` and `upload_max_filesize` in `php.ini` according to your own needs
    ```bash
-   $ sudo nano /etc/php/7.2/apache2/php.ini
-   $ sudo nano /etc/php/7.2/cli/php.ini
-   $ sudo /etc/init.d/apache2 restart
+   $ sudo nano /etc/php/php.ini
    ```
 4. Install [PHP Composer](https://getcomposer.org)
 ```bash
